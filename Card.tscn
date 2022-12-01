@@ -1,0 +1,174 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Fonts/comic.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Card.gd" type="Script" id=2]
+[ext_resource path="res://MainTheme.tres" type="Theme" id=3]
+[ext_resource path="res://art/CardText.png" type="Texture" id=4]
+[ext_resource path="res://Outline.gdshader" type="Shader" id=5]
+
+[sub_resource type="ShaderMaterial" id=10]
+resource_local_to_scene = true
+shader = ExtResource( 5 )
+shader_param/color = Color( 1, 0, 0, 1 )
+shader_param/width = 0.0
+shader_param/pattern = 2
+shader_param/inside = false
+shader_param/add_margins = true
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 97.2222, 97.2222 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Wiggle"
+length = 0.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.25, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -7.0, 0.0, 7.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.25, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ), Vector2( 0.95, 0.95 ), Vector2( 0.9, 0.9 ), Vector2( 0.95, 0.95 ), Vector2( 0.9, 0.9 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Wiggle_BIG"
+length = 0.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.25, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -7.0, 0.0, 7.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.25, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 4, 4 ), Vector2( 4.2, 4.2 ), Vector2( 4, 4 ), Vector2( 4.2, 4.2 ), Vector2( 4, 4 ) ]
+}
+
+[node name="Area2D" type="Area2D"]
+scale = Vector2( 0.9, 0.9 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 10 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+process_priority = 2
+position = Vector2( -1.66667, -0.555557 )
+shape = SubResource( 1 )
+
+[node name="LabelText" type="Label" parent="."]
+margin_left = -78.0
+margin_top = -86.0
+margin_right = 78.0
+margin_bottom = 60.0
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 0, 0, 0.529412 )
+custom_fonts/font = SubResource( 4 )
+text = "It's not me it's you."
+valign = 1
+autowrap = true
+
+[node name="LabelRarity" type="Label" parent="."]
+margin_left = -55.5556
+margin_top = 61.1111
+margin_right = 80.4444
+margin_bottom = 85.1111
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 0, 0, 0.529412 )
+custom_fonts/font = SubResource( 5 )
+text = "Legendary"
+align = 2
+
+[node name="LabelValue" type="Label" parent="."]
+margin_left = 50.0
+margin_top = -105.556
+margin_right = 186.0
+margin_bottom = 15.4444
+rect_scale = Vector2( 0.8, 0.8 )
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0.447059, 0.447059, 0.447059, 1 )
+custom_colors/font_color_shadow = Color( 0.254902, 0.254902, 0.254902, 0.423529 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+text = "0"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 6 )
+anims/Wiggle = SubResource( 7 )
+anims/Wiggle_BIG = SubResource( 8 )
+
+[connection signal="input_event" from="." to="." method="_on_Area2D_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Area2D_mouse_exited"]
